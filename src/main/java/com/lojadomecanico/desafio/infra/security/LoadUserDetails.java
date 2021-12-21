@@ -16,7 +16,7 @@ import static com.lojadomecanico.desafio.domain.messages.exception.UserMessages.
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class AuthenticateSecurity implements UserDetailsService {
+public class LoadUserDetails implements UserDetailsService {
 
     private final UserRepositoryJpa userRepositoryJpa;
 

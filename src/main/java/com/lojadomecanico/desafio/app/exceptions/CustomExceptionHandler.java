@@ -21,8 +21,8 @@ class CustomExceptionHandler {
                 "Algum campo inválido",
                 HttpStatus.BAD_REQUEST.value(),
                 new Date().getTime(),
-                bad.getStackTrace()[0].getMethodName(),
-                bad.getMessage()
+                bad.getMessage(),
+                bad.getStackTrace()[0].getMethodName()
                 );
 
         return new ResponseEntity<>(invalidValuesInRequest, HttpStatus.BAD_REQUEST);
@@ -34,9 +34,9 @@ class CustomExceptionHandler {
                 "Recurso não encontrado",
                 HttpStatus.NOT_FOUND.value(),
                 new Date().getTime(),
-                notFound.getStackTrace()[0].getMethodName(),
-                notFound.getMessage()
-        );
+                notFound.getMessage(),
+                notFound.getStackTrace()[0].getMethodName()
+                );
 
         return new ResponseEntity<>(notFoundDetails, HttpStatus.NOT_FOUND);
     }
@@ -47,8 +47,8 @@ class CustomExceptionHandler {
                 "Algum campo inválido",
                 HttpStatus.BAD_REQUEST.value(),
                 new Date().getTime(),
-                bad.getStackTrace()[0].getMethodName(),
-                bad.getMessage()
+                bad.getMessage(),
+                bad.getStackTrace()[0].getMethodName()
         );
         return new ResponseEntity<>(badDetails, HttpStatus.BAD_REQUEST);
     }
@@ -59,8 +59,8 @@ class CustomExceptionHandler {
                 "Erro interno no servidor",
                 HttpStatus.NOT_FOUND.value(),
                 new Date().getTime(),
-                server.getStackTrace()[0].getMethodName(),
-                server.getMessage()
+                server.getMessage(),
+                server.getStackTrace()[0].getMethodName()
         );
         return new ResponseEntity<>(serverError, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -71,8 +71,8 @@ class CustomExceptionHandler {
                 "Não autorizado",
                 HttpStatus.UNAUTHORIZED.value(),
                 new Date().getTime(),
-                auth.getStackTrace()[0].getMethodName(),
-                auth.getMessage()
+                auth.getMessage(),
+                auth.getStackTrace()[0].getMethodName()
         );
 
         return new ResponseEntity<>(noAuth, HttpStatus.UNAUTHORIZED);

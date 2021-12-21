@@ -16,9 +16,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @EnableWebSecurity
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class Security extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final AuthenticateSecurity authSecurity;
+    private final LoadUserDetails authSecurity;
     private final AuthenticateProtocol jwtService;
     private final UserRepositoryJpa userRepositoryJpa;
 
@@ -33,10 +33,11 @@ public class Security extends WebSecurityConfigurerAdapter {
                 // public routes
                 .antMatchers(HttpMethod.POST,
                         "/login",
-                        "users/retrieve-password"
+                        "/users/retrieve-password",
+                        "/users"
                 ).permitAll()
                 .antMatchers(HttpMethod.PUT,
-                        "users/redefine-password"
+                        "/users/redefine-password"
                 ).permitAll()
 
 

@@ -2,6 +2,7 @@ package com.lojadomecanico.desafio.infra.database.repository.impl;
 
 import com.lojadomecanico.desafio.domain.entities.User;
 import com.lojadomecanico.desafio.domain.repositories.RepositoryGeneric;
+import com.lojadomecanico.desafio.domain.repositories.UserRepository;
 import com.lojadomecanico.desafio.infra.database.entity.UserEntity;
 import com.lojadomecanico.desafio.infra.database.repository.UserRepositoryJpa;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-    public class UserRepositoryImpl implements RepositoryGeneric<User> {
+    public class UserRepositoryImpl implements UserRepository {
 
     private final UserRepositoryJpa userRepositoryJpa;
 
@@ -44,5 +45,12 @@ import java.util.stream.Collectors;
         Optional<UserEntity> entity = userRepositoryJpa.findById(id);
 
         entity.ifPresent(user -> user.setIsActive(0));
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepositoryJpa.findByEmail(email)
+                .map(UserEntity::fromDomain)
+                .orElse(null);
     }
 }
