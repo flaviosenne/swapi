@@ -12,7 +12,7 @@ public class ValidateFields {
 
     public static String convertBase64ToString(String base64){
         try{
-            return Base64.getDecoder().decode(base64).toString();
+            return new String(Base64.getDecoder().decode(base64));
         }catch (Exception e){
             throw new ServerErrorException(e.getMessage());
         }

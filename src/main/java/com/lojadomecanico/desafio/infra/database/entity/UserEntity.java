@@ -1,14 +1,13 @@
 package com.lojadomecanico.desafio.infra.database.entity;
 
-import com.lojadomecanico.desafio.app.dtos.UserDto;
 import com.lojadomecanico.desafio.domain.entities.User;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Getter
 @Setter

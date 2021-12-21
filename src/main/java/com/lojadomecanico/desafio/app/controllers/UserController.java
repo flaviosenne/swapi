@@ -4,6 +4,7 @@ import com.lojadomecanico.desafio.app.dtos.UserDto;
 import com.lojadomecanico.desafio.domain.entities.User;
 import com.lojadomecanico.desafio.domain.protocols.UserProtocol;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class UserController {
 
     @CrossOrigin
     @PostMapping
+    @ResponseStatus(value = HttpStatus.CREATED)
     public UserDto save(@RequestBody UserDto dto){
         User userToSave = UserDto.fromDomain(dto);
         User userSaved = service.save(userToSave);
