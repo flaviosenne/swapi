@@ -87,4 +87,17 @@ public class User {
                 existUser.getCreatedAt(),
                 new Date());
     }
+
+    public static User cloneUserRedefinePassword(User existUser, String password){
+        return new User(
+                existUser.getId(),
+                existUser.getName(),
+                existUser.getEmail(),
+                password,
+                existUser.getCpfCnpj(),
+                existUser.getIsCnpj(),
+                existUser.getIsActive(),
+                existUser.getCreatedAt(),
+                new Date());
+    }
 }

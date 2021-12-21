@@ -1,6 +1,7 @@
 package com.lojadomecanico.desafio.domain.protocols;
 
 import com.lojadomecanico.desafio.domain.dtos.LoginDto;
+import com.lojadomecanico.desafio.domain.dtos.RedefinePasswordDto;
 import com.lojadomecanico.desafio.domain.dtos.ResponseLoginDto;
 import com.lojadomecanico.desafio.domain.entities.User;
 
@@ -18,6 +19,10 @@ public interface UserProtocol {
     User update(User user);
 
     void deleteById(Integer id);
+
+    void retrievePassword(String email);
+
+    void redefinePassword(RedefinePasswordDto dto);
 
 
 }
