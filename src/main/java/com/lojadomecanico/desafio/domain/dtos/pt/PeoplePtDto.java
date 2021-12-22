@@ -1,4 +1,4 @@
-package com.lojadomecanico.desafio.app.dtos.pt;
+package com.lojadomecanico.desafio.domain.dtos.pt;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
