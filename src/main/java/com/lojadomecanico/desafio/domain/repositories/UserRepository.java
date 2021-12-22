@@ -2,7 +2,9 @@ package com.lojadomecanico.desafio.domain.repositories;
 
 import com.lojadomecanico.desafio.domain.entities.User;
 
+import java.util.Optional;
+
 public interface UserRepository extends RepositoryGeneric<User> {
 
-    User findByEmail(String email);
+    Optional<User> findByEmail(String email);
 }

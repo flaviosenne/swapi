@@ -18,6 +18,7 @@ import com.lojadomecanico.desafio.domain.usecases.utils.GenericService;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import static com.lojadomecanico.desafio.domain.messages.email.MessagesEmail.RETRIEVE_PASSWORD_SUBJECT;
 import static com.lojadomecanico.desafio.domain.messages.exception.UserMessages.*;
@@ -46,9 +47,9 @@ public class UserServiceImpl implements UserProtocol {
         GenericService.validateField(user.getEmail(), EMAIL_NOT_PROVIDER);
         GenericService.validateField(user.getPassword(), PASSWORD_NOT_PROVIDER);
 
-        User alreadyExistUser = repository.findByEmail(user.getEmail());
+        Optional<User> alreadyExist = repository.findByEmail(user.getEmail());
 
-        if(alreadyExistUser != null) throw new BadRequestException(USER_ALREADY_EXIST_EMAIL);
+        if(alreadyExist.isPresent()) throw new BadRequestException(USER_ALREADY_EXIST_EMAIL);
 
         String password = GenericService.convertBase64ToString(user.getPassword());
 
@@ -79,9 +80,9 @@ public class UserServiceImpl implements UserProtocol {
 
         String password = GenericService.convertBase64ToString(dto.getPassword());
 
-        User user = repository.findByEmail(dto.getEmail());
+        User user = repository.findByEmail(dto.getEmail())
+                .orElseThrow(()->new BadRequestException(INCORRECT_CREDENTIALS));
 
-        if(user == null) throw new BadRequestException(INCORRECT_CREDENTIALS);
 
         boolean isMatchers = cryptographyProtocol.passwordMatchers(user.getPassword(), password);
 
@@ -126,9 +127,8 @@ public class UserServiceImpl implements UserProtocol {
 
     @Override
     public void retrievePassword(String email) {
-        User user = repository.findByEmail(email);
-
-        if(user == null) throw new NotFoundException(USER_NOT_FOUND);
+        User user = repository.findByEmail(email)
+                .orElseThrow(()-> new NotFoundException(USER_NOT_FOUND));
 
         String code = GenericService.generateRandomCode();
 

@@ -29,14 +29,14 @@ import java.util.stream.Collectors;
     @Override
     public List<User> listAll() {
         return userRepositoryJpa.findAll().stream()
-                .map(user -> UserEntity.fromDomain(user))
+                .map(UserEntity::fromDomain)
                 .collect(Collectors.toList());
     }
 
     @Override
     public User listById(Integer id) {
         return userRepositoryJpa.findById(id)
-                .map(user -> UserEntity.fromDomain(user))
+                .map(UserEntity::fromDomain)
                 .orElse(null);
     }
 
@@ -48,9 +48,8 @@ import java.util.stream.Collectors;
     }
 
     @Override
-    public User findByEmail(String email) {
+    public Optional<User> findByEmail(String email) {
         return userRepositoryJpa.findByEmail(email)
-                .map(UserEntity::fromDomain)
-                .orElse(null);
+                .map(UserEntity::fromDomain);
     }
 }

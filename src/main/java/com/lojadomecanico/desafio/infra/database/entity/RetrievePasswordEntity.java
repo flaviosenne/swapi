@@ -13,6 +13,7 @@ import java.util.Date;
 @Setter
 @Table(name = "code_retrieve_password")
 @Entity
+@ToString
 public class RetrievePasswordEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

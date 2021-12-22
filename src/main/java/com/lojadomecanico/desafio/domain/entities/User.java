@@ -8,12 +8,12 @@ public class User {
     private final String email;
     private final String password;
     private final String cpfCnpj;
-    private final String isCnpj;
+    private final Integer isCnpj;
     private final Integer isActive;
     private final Date createdAt;
     private final Date updatedAt;
 
-    public User(Integer id, String name, String email, String password, String cpfCnpj, String isCnpj, Integer isActive, Date createdAt, Date updatedAt) {
+    public User(Integer id, String name, String email, String password, String cpfCnpj, Integer isCnpj, Integer isActive, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -45,7 +45,7 @@ public class User {
         return cpfCnpj;
     }
 
-    public String getIsCnpj() {
+    public Integer getIsCnpj() {
         return isCnpj;
     }
 

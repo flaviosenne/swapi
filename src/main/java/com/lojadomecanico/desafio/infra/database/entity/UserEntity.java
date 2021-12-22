@@ -13,6 +13,7 @@ import java.util.Date;
 @Setter
 @Table(name = "user")
 @Entity
+@ToString
 public class UserEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -22,7 +23,7 @@ public class UserEntity {
     @Column(name = "cpf_cnpj")
     private String cpfCnpj;
     @Column(name = "is_cnpj")
-    private String isCnpj;
+    private Integer isCnpj;
     @Column(name = "is_active")
     private Integer isActive;
     @Column(name = "created_at")

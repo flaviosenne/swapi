@@ -18,7 +18,7 @@ public class UserDto {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private final String password;
     private final String cpfCnpj;
-    private final String isCnpj;
+    private final Integer isCnpj;
     private final Integer isActive;
     private final Date createdAt;
     private final Date updatedAt;
