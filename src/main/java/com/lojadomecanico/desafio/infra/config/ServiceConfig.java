@@ -1,12 +1,10 @@
 package com.lojadomecanico.desafio.infra.config;
 
 import com.lojadomecanico.desafio.domain.dtos.eng.FilmsEngDto;
-import com.lojadomecanico.desafio.domain.dtos.pt.FilmsPtDto;
 import com.lojadomecanico.desafio.domain.protocols.*;
 import com.lojadomecanico.desafio.domain.repositories.RetrievePasswordRepository;
 import com.lojadomecanico.desafio.domain.repositories.UserRepository;
-import com.lojadomecanico.desafio.domain.usecases.FilmsEngService;
-import com.lojadomecanico.desafio.domain.usecases.FilmsPtService;
+import com.lojadomecanico.desafio.domain.usecases.FilmsService;
 import com.lojadomecanico.desafio.domain.usecases.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,11 +26,7 @@ public class ServiceConfig {
     }
 
     @Bean
-    RequestGenericApiProtocol<FilmsEngDto> filmsEng(){
-        return new FilmsEngService();
-    }
-    @Bean
-    RequestGenericApiProtocol<FilmsPtDto> filmsPt(){
-        return new FilmsPtService();
+    RequestGenericApiProtocol<FilmsEngDto> films(){
+        return new FilmsService();
     }
 }

@@ -57,7 +57,7 @@ public class FilmsEngDto {
 
     }
 
-    public FilmsPtDto fromPt(FilmsEngDto films){
+    public static FilmsPtDto fromPt(FilmsEngDto films){
         return new FilmsPtDto(
                 films.getTitle(),
                 films.getEpisodeId(),

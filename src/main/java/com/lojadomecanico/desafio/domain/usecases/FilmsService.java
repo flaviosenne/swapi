@@ -15,7 +15,7 @@ import java.util.List;
 
 import static com.lojadomecanico.desafio.domain.usecases.utils.Constants.URI_SWAPI;
 
-public class FilmsEngService implements RequestGenericApiProtocol<FilmsEngDto> {
+public class FilmsService implements RequestGenericApiProtocol<FilmsEngDto> {
 
     @Override
     public List<FilmsEngDto> listAll() {
