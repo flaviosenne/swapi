@@ -1,8 +1,8 @@
 package com.lojadomecanico.desafio.app.controllers;
 
 
-import com.lojadomecanico.desafio.domain.dtos.eng.FilmsEngDto;
 import com.lojadomecanico.desafio.domain.dtos.eng.PeopleEngDto;
+import com.lojadomecanico.desafio.domain.dtos.eng.PlanetsEngDto;
 import com.lojadomecanico.desafio.domain.protocols.RequestGenericApiProtocol;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,35 +13,35 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/swapi")
-public class PeopleController {
+public class PlanetsController {
 
-    private final RequestGenericApiProtocol<PeopleEngDto> peopleEng;
+    private final RequestGenericApiProtocol<PlanetsEngDto> planetsEng;
 
 
     @CrossOrigin
-    @GetMapping(value = "/people")
-    public List<?> getPeoples(@RequestParam(value = "lang", defaultValue = "eng") String lang){
-        List<PeopleEngDto> peoples = peopleEng.listAll();
+    @GetMapping(value = "/planets")
+    public List<?> getPlanets(@RequestParam(value = "lang", defaultValue = "eng") String lang){
+        List<PlanetsEngDto> planets = planetsEng.listAll();
 
         if("pt".equals(lang)) {
-            return peoples.stream().map(PeopleEngDto::fromPt)
+            return planets.stream().map(PlanetsEngDto::fromPt)
                     .collect(Collectors.toList());
         }
 
-        return peoples;
+        return planets;
     }
 
     @CrossOrigin
-    @GetMapping(value = "/people/{id}")
-    public Object getPeople(@PathVariable("id")Integer id,
+    @GetMapping(value = "/planets/{id}")
+    public Object getFilms(@PathVariable("id")Integer id,
                            @RequestParam(value = "lang", defaultValue = "eng") String lang){
-        PeopleEngDto people = peopleEng.listById(id);
+        PlanetsEngDto planet = planetsEng.listById(id);
 
         if("pt".equals(lang)) {
-            return PeopleEngDto.fromPt(people);
+            return PlanetsEngDto.fromPt(planet);
         }
 
-        return people;
+        return planet;
     }
 
 }

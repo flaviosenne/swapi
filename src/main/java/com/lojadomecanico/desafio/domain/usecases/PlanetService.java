@@ -1,7 +1,8 @@
 package com.lojadomecanico.desafio.domain.usecases;
 
 import com.lojadomecanico.desafio.domain.dtos.ResultListSwapi;
-import com.lojadomecanico.desafio.domain.dtos.eng.FilmsEngDto;
+import com.lojadomecanico.desafio.domain.dtos.eng.PeopleEngDto;
+import com.lojadomecanico.desafio.domain.dtos.eng.PlanetsEngDto;
 import com.lojadomecanico.desafio.domain.protocols.RequestGenericApiProtocol;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -15,34 +16,34 @@ import java.util.List;
 
 import static com.lojadomecanico.desafio.domain.usecases.utils.Constants.URI_SWAPI;
 
-public class FilmsService implements RequestGenericApiProtocol<FilmsEngDto> {
+public class PlanetService implements RequestGenericApiProtocol<PlanetsEngDto> {
 
     @Override
-    public List<FilmsEngDto> listAll() {
+    public List<PlanetsEngDto> listAll() {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = this.getHeaders();
 
-        HttpEntity<FilmsEngDto> request = new HttpEntity<>(null, headers);
+        HttpEntity<PlanetsEngDto> request = new HttpEntity<>(null, headers);
 
-        ResultListSwapi<FilmsEngDto> result =
-                restTemplate.exchange(URI_SWAPI + "/films", HttpMethod.GET, request,
-                        new ParameterizedTypeReference<ResultListSwapi<FilmsEngDto>>() {
+        ResultListSwapi<PlanetsEngDto> result =
+                restTemplate.exchange(URI_SWAPI + "/planets", HttpMethod.GET, request,
+                        new ParameterizedTypeReference<ResultListSwapi<PlanetsEngDto>>() {
                         }).getBody();
 
         return  result == null ? Collections.emptyList() : result.getResults();
     }
 
     @Override
-    public FilmsEngDto listById(Integer id) {
+    public PlanetsEngDto listById(Integer id) {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = this.getHeaders();
 
-        HttpEntity<FilmsEngDto> request = new HttpEntity<>(null, headers);
+        HttpEntity<PlanetsEngDto> request = new HttpEntity<>(null, headers);
 
-        return  restTemplate.exchange(URI_SWAPI+"/films/"+id, HttpMethod.GET, request,
-                        new ParameterizedTypeReference<FilmsEngDto>(){})
+        return  restTemplate.exchange(URI_SWAPI+"/planets/"+id, HttpMethod.GET, request,
+                        new ParameterizedTypeReference<PlanetsEngDto>(){})
                 .getBody();
     }
 
