@@ -44,4 +44,26 @@ public class PeoplePtDto {
     private Date updatedAt;
     @JsonProperty(value = "url")
     private String url;
+
+    public PeoplePtDto(){
+
+    }
+    public PeoplePtDto(String name, String height, String mass, String hairColor, String skinColor, String eyeColor, String birthYear, String gender, String homeWorld, List<String> films, List<String> species, List<String> vehicles, List<String> startShips, Date createdAt, Date updatedAt, String url) {
+        this.name = name;
+        this.height = height;
+        this.mass = mass;
+        this.hairColor = hairColor;
+        this.skinColor = skinColor;
+        this.eyeColor = eyeColor;
+        this.birthYear = birthYear;
+        this.gender = gender;
+        this.homeWorld = homeWorld;
+        this.films = films;
+        this.species = species;
+        this.vehicles = vehicles;
+        this.startShips = startShips;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.url = url;
+    }
 }

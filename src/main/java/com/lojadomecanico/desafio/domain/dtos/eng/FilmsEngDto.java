@@ -36,23 +36,6 @@ public class FilmsEngDto {
     @JsonProperty("url")
     private String url;
 
-    public FilmsEngDto(String title, Integer episodeId, String openingCrawl, String director, String producer, String releaseDate, List<String> characters, List<String> planets, List<String> startShips, List<String> vehicles, List<String> species, Date createdAt, Date updatedAt, String url) {
-        this.title = title;
-        this.episodeId = episodeId;
-        this.openingCrawl = openingCrawl;
-        this.director = director;
-        this.producer = producer;
-        this.releaseDate = releaseDate;
-        this.characters = characters;
-        this.planets = planets;
-        this.startShips = startShips;
-        this.vehicles = vehicles;
-        this.species = species;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.url = url;
-    }
-
     public FilmsEngDto(){
 
     }

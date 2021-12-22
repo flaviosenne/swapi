@@ -8,7 +8,7 @@ public class ResultListSwapi<DTO> {
     @JsonProperty("count")
     private Integer count;
     @JsonProperty("next")
-    private boolean next;
+    private String next;
     @JsonProperty("previous")
     private boolean previous;
     @JsonProperty("results")
@@ -18,7 +18,7 @@ public class ResultListSwapi<DTO> {
 
     }
 
-    public ResultListSwapi(Integer count, boolean next, boolean previous, List<DTO> results) {
+    public ResultListSwapi(Integer count, String next, boolean previous, List<DTO> results) {
         this.count = count;
         this.next = next;
         this.previous = previous;
@@ -29,7 +29,7 @@ public class ResultListSwapi<DTO> {
         return count;
     }
 
-    public boolean isNext() {
+    public String isNext() {
         return next;
     }
 

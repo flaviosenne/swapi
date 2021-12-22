@@ -2,6 +2,7 @@ package com.lojadomecanico.desafio.app.controllers;
 
 
 import com.lojadomecanico.desafio.domain.dtos.eng.FilmsEngDto;
+import com.lojadomecanico.desafio.domain.dtos.eng.PeopleEngDto;
 import com.lojadomecanico.desafio.domain.protocols.RequestGenericApiProtocol;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,18 +13,18 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/swapi")
-public class SwapiController {
+public class PeopleController {
 
-    private final RequestGenericApiProtocol<FilmsEngDto> filmsEng;
+    private final RequestGenericApiProtocol<PeopleEngDto> peopleEng;
 
 
     @CrossOrigin
-    @GetMapping(value = "/films")
+    @GetMapping(value = "/people")
     public List<?> getFilms(@RequestParam(value = "lang", defaultValue = "eng") String lang){
-        List<FilmsEngDto> films = filmsEng.listAll();
+        List<PeopleEngDto> films = peopleEng.listAll();
 
         if("pt".equals(lang)) {
-            return films.stream().map(FilmsEngDto::fromPt)
+            return films.stream().map(PeopleEngDto::fromPt)
                     .collect(Collectors.toList());
         }
 
@@ -31,13 +32,13 @@ public class SwapiController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/films/{id}")
+    @GetMapping(value = "/people/{id}")
     public Object getFilms(@PathVariable("id")Integer id,
                            @RequestParam(value = "lang", defaultValue = "eng") String lang){
-        FilmsEngDto film = filmsEng.listById(id);
+        PeopleEngDto film = peopleEng.listById(id);
 
         if("pt".equals(lang)) {
-            return FilmsEngDto.fromPt(film);
+            return PeopleEngDto.fromPt(film);
         }
 
         return film;
