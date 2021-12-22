@@ -11,8 +11,9 @@ public interface RetrievePasswordRepositoryJpa extends JpaRepository<RetrievePas
 
     @Query("select r from RetrievePasswordEntity r where r.code = :code")
     Optional<RetrievePasswordEntity> findByCode(String code);
+
     @Query("select r from RetrievePasswordEntity r " +
             "join r.user u " +
-            "where u.id = :userId")
+            "where u.id = :userId and r.isValid = 1")
     Optional<RetrievePasswordEntity> findByUserId(Integer userId);
 }

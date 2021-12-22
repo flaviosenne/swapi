@@ -46,6 +46,10 @@ public class UserServiceImpl implements UserProtocol {
         GenericService.validateField(user.getEmail(), EMAIL_NOT_PROVIDER);
         GenericService.validateField(user.getPassword(), PASSWORD_NOT_PROVIDER);
 
+        User alreadyExistUser = repository.findByEmail(user.getEmail());
+
+        if(alreadyExistUser != null) throw new BadRequestException(USER_ALREADY_EXIST_EMAIL);
+
         String password = GenericService.convertBase64ToString(user.getPassword());
 
         String hash = cryptographyProtocol.encode(password);
@@ -166,6 +170,9 @@ public class UserServiceImpl implements UserProtocol {
         User newUser = User.cloneUserRedefinePassword(user, hash);
 
         repository.save(newUser);
+
+        retrievePasswordRepository.save(RetrievePassword
+                .cloneRetrievePasswordDelete(code));
     }
 
 }
